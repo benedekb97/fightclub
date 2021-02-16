@@ -48,19 +48,19 @@ public class CreateGame {
         try {
             do {
                 mapCenterX = this.numberBetween(
-                        server.getMaxWorldSize(),
-                        (-1) * server.getMaxWorldSize()
+                    server.getMaxWorldSize(),
+                    (-1) * server.getMaxWorldSize()
                 );
                 mapCenterZ = this.numberBetween(
-                        server.getMaxWorldSize(),
-                        (-1) * server.getMaxWorldSize()
+                    server.getMaxWorldSize(),
+                    (-1) * server.getMaxWorldSize()
                 );
 
                 location = new Location(
-                        world,
-                        mapCenterX,
-                        world.getHighestBlockYAt((int)mapCenterX, (int)mapCenterZ),
-                        mapCenterZ
+                    world,
+                    mapCenterX,
+                    world.getHighestBlockYAt((int)mapCenterX, (int)mapCenterZ),
+                    mapCenterZ
                 );
             } while(this.checkBiome(world, location));
         } catch (NullPointerException exception) {
@@ -106,24 +106,24 @@ public class CreateGame {
     {
         // teleport players to new arena
         for (Player player : server.getOnlinePlayers()) {
-            double playerLocationX = this.numberBetween((
-                            int)(location.getBlockX() - MAX_SIZE / 2),
-                    (int)(location.getBlockX() + MAX_SIZE / 2)
+            double playerLocationX = this.numberBetween(
+                (int)(location.getBlockX() - MAX_SIZE / 2),
+                (int)(location.getBlockX() + MAX_SIZE / 2)
             );
 
             double playerLocationZ = this.numberBetween(
-                    (int)(location.getBlockZ() - MAX_SIZE / 2),
-                    (int)(location.getBlockZ() + MAX_SIZE / 2)
+                (int)(location.getBlockZ() - MAX_SIZE / 2),
+                (int)(location.getBlockZ() + MAX_SIZE / 2)
             );
 
             server.getConsoleSender().sendMessage("Player X: " + playerLocationX + " Z: " + playerLocationZ);
             server.getConsoleSender().sendMessage("World center X: " + location.getBlockX() + " Z: " + location.getBlockZ());
 
             Location playerLocation = new Location(
-                    player.getWorld(),
-                    playerLocationX,
-                    player.getWorld().getHighestBlockYAt((int)playerLocationX, (int)playerLocationZ) + 2,
-                    playerLocationZ
+                player.getWorld(),
+                playerLocationX,
+                player.getWorld().getHighestBlockYAt((int)playerLocationX, (int)playerLocationZ) + 2,
+                playerLocationZ
             );
 
             player.teleport(playerLocation);
@@ -133,15 +133,15 @@ public class CreateGame {
         }
 
         server.getScheduler().scheduleSyncDelayedTask(
-                this.plugin,
-                () -> {
-                    // set world border
-                    for (World currentWorld : server.getWorlds()) {
-                        currentWorld.getWorldBorder().setCenter(location.getBlockX(), location.getBlockZ());
-                        currentWorld.getWorldBorder().setSize(MAX_SIZE);
-                    }
-                },
-                40
+            this.plugin,
+            () -> {
+                // set world border
+                for (World currentWorld : server.getWorlds()) {
+                    currentWorld.getWorldBorder().setCenter(location.getBlockX(), location.getBlockZ());
+                    currentWorld.getWorldBorder().setSize(MAX_SIZE);
+                }
+            },
+            40
         );
     }
 
