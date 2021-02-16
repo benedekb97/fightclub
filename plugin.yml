@@ -1,0 +1,16 @@
+main: benedekb.main.fightclub.Main
+name: FightClub
+version: 1.0
+author: benedekb
+description: A plugin with special fights
+commands:
+  fightclub:
+    description: Displays the version of the FightClub plugin
+    usage: /fightclub
+    persmision: fightclub.fightclub
+    permission-message: You don't have the persmissions necessary to run this command!
+  fc:
+    description: Fightclub alias
+    usage: /fc
+    permission: fightclub.fc
+    permission-message: You don't have to permissions necessary to run this command!

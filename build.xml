@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="FightClub" default="makejar" basedir=".">
+    <target name="makejar" description="Create JAR file">
+        <mkdir dir="target"/>
+        <jar destfile="target/${ant.project.name}.jar">
+            <fileset dir="src"/>
+            <fileset file="src/benedekb/main/fightclub/Main.java"/>
+            <fileset file="src/benedekb/command/fightclub/CommandInterface.java"/>
+            <fileset file="src/benedekb/command/fightclub/CreateTagGame.java"/>
+            <fileset file="plugin.yml"/>
+        </jar>
+    </target>
+</project>
