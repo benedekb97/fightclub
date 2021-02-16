@@ -17,16 +17,16 @@ public class CreateGame {
     protected final Main plugin;
 
     protected final Biome[] OCEAN_BIOMES = {
-            Biome.OCEAN,
-            Biome.COLD_OCEAN,
-            Biome.DEEP_OCEAN,
-            Biome.DEEP_COLD_OCEAN,
-            Biome.DEEP_FROZEN_OCEAN,
-            Biome.WARM_OCEAN,
-            Biome.DEEP_LUKEWARM_OCEAN,
-            Biome.FROZEN_OCEAN,
-            Biome.DEEP_WARM_OCEAN,
-            Biome.LUKEWARM_OCEAN
+        Biome.OCEAN,
+        Biome.COLD_OCEAN,
+        Biome.DEEP_OCEAN,
+        Biome.DEEP_COLD_OCEAN,
+        Biome.DEEP_FROZEN_OCEAN,
+        Biome.WARM_OCEAN,
+        Biome.DEEP_LUKEWARM_OCEAN,
+        Biome.FROZEN_OCEAN,
+        Biome.DEEP_WARM_OCEAN,
+        Biome.LUKEWARM_OCEAN
     };
 
     protected final double MAX_SIZE = 128;
@@ -150,20 +150,20 @@ public class CreateGame {
         List<Biome> oceanBiomes = Arrays.asList(OCEAN_BIOMES);
 
         return oceanBiomes.contains(
-                world.getBiome(location.getBlockX(), location.getBlockY(), location.getBlockZ())
+            world.getBiome(location.getBlockX(), location.getBlockY(), location.getBlockZ())
         );
     }
 
     private void scheduleTimerMessage(int secondsLeft, int maxTime)
     {
         int taskId = this.plugin.getServer().getScheduler().scheduleSyncDelayedTask(
-                this.plugin,
-                () -> {
-                    if (this.plugin.isGameInProgress()) {
-                        this.plugin.getServer().broadcastMessage(secondsLeft + " seconds left!");
-                    }
-                },
-                (maxTime - secondsLeft) * 20L
+            this.plugin,
+            () -> {
+                if (this.plugin.isGameInProgress()) {
+                    this.plugin.getServer().broadcastMessage(secondsLeft + " seconds left!");
+                }
+            },
+            (maxTime - secondsLeft) * 20L
         );
 
         int[] newScheduledTasks = new int[this.scheduledTasks.length + 1];
